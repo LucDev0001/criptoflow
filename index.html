@@ -427,13 +427,18 @@
 
     <!-- Rodapé -->
     <footer>
-      <p>&copy; 2025 CriptoFlow. Todos os direitos reservados.</p>
+      <p>&copy; 2025 CriptoFlow. Todos os direitos reservados. Criada paa fins educacionias</p>
       <a href="https://t.me/MeuNumeroTelegram" target="_blank">Entre no Telegram</a>
       <a href="#">Política de Privacidade</a>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
+       // Função para alternar o menu
+       function toggleMenu() {
+        const menu = document.querySelector('.menu');
+        menu.classList.toggle('active');
+      }
       // Função para criar o gráfico
       function createChart(canvasId, data) {
         return new Chart(document.getElementById(canvasId), {
