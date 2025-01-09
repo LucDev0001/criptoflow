@@ -38,6 +38,52 @@
         white-space: nowrap;
       }
 
+/* Container para a frase de efeito */
+.effect-container {
+  height: 300px;
+  text-align: center;
+  margin-top: 20px;
+  color: white;
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 2.5em;
+  font-weight: bold;
+  letter-spacing: 2px;
+  white-space: normal; /* Permite quebra de linha */
+  word-wrap: break-word; /* Garante a quebra de linha em palavras longas */
+}
+
+/* Responsividade */
+@media screen and (max-width: 1200px) {
+  .effect-container {
+    font-size: 2.2em; /* Diminui o tamanho da fonte em telas menores */
+    padding: 20px; /* Menos padding em telas menores */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .effect-container {
+    font-size: 1.8em; /* Reduz ainda mais o tamanho da fonte */
+    padding: 15px; /* Reduz o padding */
+    height: auto; /* Ajusta a altura */
+    white-space: normal; /* Garante quebra de linha em telas pequenas */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .effect-container {
+    font-size: 1.5em; /* Reduz o tamanho da fonte para telas pequenas */
+    padding: 10px; /* Menos padding */
+    height: auto; /* Ajusta a altura para telas pequenas */
+    letter-spacing: 1px; /* Diminui o espaçamento das letras */
+    white-space: normal; /* Garante quebra de linha em telas pequenas */
+  }
+}
+
+
+
       /* Estilo para o menu */
       nav {
         padding: 10px;
