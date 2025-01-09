@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="ptbr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* Estilo básico */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: rgb(2,0,36);
+        background: linear-gradient(355deg, rgba(2,0,36,1) 0%, rgba(0,0,226,1) 82%, rgba(0,212,255,1) 100%);
+      }
+
+      h1 {
+        text-align: center;
+        color: #ffffff;
+        margin-top: 50px;
+        font-size: 3em;
+        text-transform: uppercase;
+      }
+
+      /* Container para a frase de efeito */
+      .effect-container {
+        height: 300px;
+        text-align: center;
+        margin-top: 20px;
+        color: white;
+        padding: 30px;
+        border-radius: 10px;
+        max-width: 800px;
+        margin: 0 auto;
+        font-size: 2.5em;
+        font-weight: bold;
+        letter-spacing: 2px;
+        white-space: nowrap;
+      }
+
+      /* Estilo para o menu */
+      nav {
+        padding: 10px;
+      }
+
+      .menu {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .menu ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+      }
+
+      .menu ul li {
+        margin: 0 20px;
+      }
+
+      .menu ul li a {
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+      }
+
+      /* Estilo para a ícone de menu em telas pequenas */
+      .menu-toggle {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        z-index: 1;
+      }
+
+      .menu-toggle div {
+        width: 30px;
+        height: 3px;
+        background-color: white;
+        margin: 5px;
+      }
+
+      /* Responsivo */
+      @media screen and (max-width: 768px) {
+        .menu ul {
+          display: none;
+          width: 100%;
+          text-align: center;
+        }
+
+        .menu.active ul {
+          display: block;
+        }
+
+        .menu ul li {
+          margin: 10px 0;
+        }
+
+        .menu-toggle {
+          display: flex;
+        }
+      }
+
+       /* Estilos para a seção de níveis de ganhos */
+       .earnings-container {
+        background-color: #1e76c2;
+        padding: 40px;
+        border-radius: 8px;
+        margin-top: 40px;
+        color: white;
+        text-align: center;
+      }
+
+      .earnings-container h2 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+      }
+
+      .levels-container {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+      }
+
+      .level {
+        background-color: #2c3e50;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 10px;
+        width: 250px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .level h3 {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+      }
+
+      .level p {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+      }
+
+      .level .deposit {
+        font-weight: bold;
+        font-size: 1.3em;
+      }
+
+      .level .time {
+        font-size: 1.1em;
+      }
+
+      /* Estilos para a seção adicionada */
+      .sc-knuQbY {
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        background-color: #000000;
+      }
+
+      .cds-flex-f1tjavv3 {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+
+      .sc-ERObt {
+        font-size: 2em;
+        color: #fafafa;
+        font-weight: bold;
+      }
+
+      .sc-empnci .cds-button-b1oh4z3j {
+        background-color: #1e76c2;
+        border-radius: 56px;
+        padding: 12px 32px;
+        font-size: 1.2em;
+        color: white;
+        text-decoration: none;
+        transition: background-color 0.3s;
+      }
+
+      .sc-empnci .cds-button-b1oh4z3j:hover {
+        background-color: #125a99;
+      }
+
+      /* Estilo para a imagem ao lado do texto */
+      .text-and-image {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+      }
+
+      .text-container {
+        flex: 1;
+        margin-right: 20px;
+      }
+
+      .image-container {
+        flex: 1;
+        max-width: 400px;
+      }
+
+      .image-container img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+      }
+
+      /* Estilo para a nova seção com gráficos */
+      .charts-container {
+        display: flex;
+        justify-content: space-around;
+        padding: 40px 20px;
+        flex-wrap: wrap;
+      }
+
+      .chart-container {
+        width: 100%;
+        max-width: 400px;
+        margin-bottom: 40px;
+        border-radius: 10px;
+        background-color: #fff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+      }
+
+      canvas {
+        max-width: 100%;
+        max-height: 300px;
+      }
+
+      /* Estilos para o rodapé */
+      footer {
+        background-color: #2c3e50;
+        color: white;
+        padding: 20px 0;
+        text-align: center;
+      }
+
+      footer a {
+        color: #ecf0f1;
+        text-decoration: none;
+        margin: 0 15px;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
+      }
+
+      footer p {
+        margin: 10px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="menu">
+        <div class="menu-toggle" onclick="toggleMenu()">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <h1>CriptoFlow</h1>
+
+    <!-- Container para a frase de efeito -->
+    <div class="effect-container">
+      <p id="typing-text"></p>
+    </div>
+
+    <!-- Seção com Imagem e Texto -->
+    <section class="sc-knuQbY sc-fulCBj ebWECO hKkwVp">
+      <div class="cds-flex-f1tjavv3 sc-knuQbY wXRUQ">
+        <div class="cds-flex-f1tjavv3 sc-knuQbY IYbVy">
+          <div class="cds-flex-f1tjavv3 sc-knuQbY bKnGnN">
+            <div
+              data-qa="TwoColumnContainerLeft"
+              class="cds-flex-f1tjavv3 sc-knuQbY cMGBeY"
+            >
+              <div class="text-and-image">
+                <div class="text-container">
+                  <h2 color="background" class="sc-ERObt fmToCE">
+                    Ganhe R$ 20 em bitcoin
+                  </h2>
+                  <p color="background" class="sc-ERObt fHLAJU">
+                    <span class="sc-bfhvDw clBdX"
+                      >Cadastre-se e faça sua primeira compra com o código
+                      BTC20</span
+                    >
+                  </p>
+                  <div
+                    class="cds-flex-f1tjavv3 sc-knuQbY sc-empnci iFzygB jpIeBg"
+                  >
+                    <div class="cds-flex-f1tjavv3 sc-knuQbY ebWECO">
+                      <a
+                        data-qa="HighlightImageText-CTAButtonsFirst"
+                        class="cds-interactable-i17wmk8f cds-focusRing-f145pgxk cds-transparent-t1pmzpst cds-button-b15nm6xx cds-scaledDownState-s1o6alxd cds-primaryForeground-pd71c0x cds-button-b1oh4z3j cds-4-_1g6imbc cds-4-_13srchq"
+                        href="https://t.me/MeuNumeroTelegram"
+                        target="_blank"
+                      >
+                        <span>Entrar no Telegram</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="image-container">
+                  <img src="Big_btc_horizontal.png" alt="Bitcoin" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="earnings-container">
+        <h2>Níveis de Ganhos</h2>
+        <p>Veja como seu saldo e tempo de liquidez podem impactar seus ganhos.</p>
+        
+        <div class="levels-container">
+          <div class="level">
+            <h3>Bronze</h3>
+            <p class="deposit">Depósito: R$ 500</p>
+            <p class="time">Tempo de Liquidez: 30 dias</p>
+            <p>Ganhos: R$ 50</p>
+          </div>
+  
+          <div class="level">
+            <h3>Prata</h3>
+            <p class="deposit">Depósito: R$ 1,500</p>
+            <p class="time">Tempo de Liquidez: 60 dias</p>
+            <p>Ganhos: R$ 180</p>
+          </div>
+  
+          <div class="level">
+            <h3>Ouro</h3>
+            <p class="deposit">Depósito: R$ 5,000</p>
+            <p class="time">Tempo de Liquidez: 90 dias</p>
+            <p>Ganhos: R$ 600</p>
+          </div>
+  
+          <div class="level">
+            <h3>Diamante</h3>
+            <p class="deposit">Depósito: R$ 10,000</p>
+            <p class="time">Tempo de Liquidez: 180 dias</p>
+            <p>Ganhos: R$ 1,500</p>
+          </div>
+        </div>
+      </section>
+
+    <!-- Seção com Gráficos de Criptomoedas -->
+    <section class="charts-container">
+      <div class="chart-container">
+        <h3>Bitcoin (BTC)</h3>
+        <canvas id="chart1"></canvas>
+      </div>
+      <div class="chart-container">
+        <h3>Ethereum (ETH)</h3>
+        <canvas id="chart2"></canvas>
+      </div>
+      <div class="chart-container">
+        <h3>Ripple (XRP)</h3>
+        <canvas id="chart3"></canvas>
+      </div>
+      <div class="chart-container">
+        <h3>Litecoin (LTC)</h3>
+        <canvas id="chart4"></canvas>
+      </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+      <p>&copy; 2025 CriptoFlow. Todos os direitos reservados.</p>
+      <a href="https://t.me/MeuNumeroTelegram" target="_blank">Entre no Telegram</a>
+      <a href="#">Política de Privacidade</a>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      // Função para criar o gráfico
+      function createChart(canvasId, data) {
+        return new Chart(document.getElementById(canvasId), {
+          type: "line",
+          data: data,
+          options: {
+            responsive: true,
+            plugins: {
+              legend: {
+                position: "top",
+              },
+              tooltip: {
+                mode: "index",
+                intersect: false,
+              },
+            },
+            scales: {
+              x: {
+                title: {
+                  display: true,
+                  text: "Date",
+                },
+              },
+              y: {
+                title: {
+                  display: true,
+                  text: "Price (USD)",
+                },
+                beginAtZero: false,
+              },
+            },
+          },
+        });
+      }
+
+      // Função para obter os preços reais das criptomoedas via CoinGecko API
+      async function fetchCryptoData() {
+        const response1 = await fetch(
+          "https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=7"
+        );
+        const bitcoinData = await response1.json();
+
+        const response2 = await fetch(
+          "https://api.coingecko.com/api/v3/coins/ethereum/market_chart?vs_currency=usd&days=7"
+        );
+        const ethereumData = await response2.json();
+
+        const response3 = await fetch(
+          "https://api.coingecko.com/api/v3/coins/ripple/market_chart?vs_currency=usd&days=7"
+        );
+        const rippleData = await response3.json();
+
+        const response4 = await fetch(
+          "https://api.coingecko.com/api/v3/coins/litecoin/market_chart?vs_currency=usd&days=7"
+        );
+        const litecoinData = await response4.json();
+
+        const labels = bitcoinData.prices.map((price) =>
+          new Date(price[0]).toLocaleDateString()
+        );
+
+        // Organizando os dados para os gráficos
+        const btcData = {
+          labels: labels,
+          datasets: [
+            {
+              label: "Bitcoin (BTC)",
+              data: bitcoinData.prices.map((price) => price[1]),
+              borderColor: "rgba(255, 99, 132, 1)",
+              backgroundColor: "rgba(255, 99, 132, 0.2)",
+              fill: true,
+            },
+          ],
+        };
+
+        const ethData = {
+          labels: labels,
+          datasets: [
+            {
+              label: "Ethereum (ETH)",
+              data: ethereumData.prices.map((price) => price[1]),
+              borderColor: "rgba(54, 162, 235, 1)",
+              backgroundColor: "rgba(54, 162, 235, 0.2)",
+              fill: true,
+            },
+          ],
+        };
+
+        const xrpData = {
+          labels: labels,
+          datasets: [
+            {
+              label: "Ripple (XRP)",
+              data: rippleData.prices.map((price) => price[1]),
+              borderColor: "rgba(75, 192, 192, 1)",
+              backgroundColor: "rgba(75, 192, 192, 0.2)",
+              fill: true,
+            },
+          ],
+        };
+
+        const ltcData = {
+          labels: labels,
+          datasets: [
+            {
+              label: "Litecoin (LTC)",
+              data: litecoinData.prices.map((price) => price[1]),
+              borderColor: "rgba(153, 102, 255, 1)",
+              backgroundColor: "rgba(153, 102, 255, 0.2)",
+              fill: true,
+            },
+          ],
+        };
+
+        // Criando os gráficos com os dados recebidos
+        createChart("chart1", btcData);
+        createChart("chart2", ethData);
+        createChart("chart3", xrpData);
+        createChart("chart4", ltcData);
+      }
+
+      // Função para o efeito de digitação
+      function typeLetter(element, text, delay = 100) {
+        let index = 0;
+        function type() {
+          if (index < text.length) {
+            element.innerHTML += text.charAt(index);
+            index++;
+            setTimeout(type, delay);
+          }
+        }
+        type();
+      }
+
+      // Função que é chamada após o carregamento da página
+      window.onload = function () {
+        // Chamada para a digitação
+        const typingText = document.getElementById("typing-text");
+        typeLetter(typingText, "Transformando sua vida financeira!");
+
+        // Chamada para os dados de criptomoedas
+        fetchCryptoData();
+      };
+    </script>
+  </body>
+</html>
